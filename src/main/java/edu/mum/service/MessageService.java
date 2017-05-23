@@ -13,6 +13,6 @@ import edu.mum.domain.User;
 public interface MessageService {
 	
 	public void save(Messages msg);
-	public User findByUserId(String id);
+	public Messages findByUserId(String id);
 	
 }

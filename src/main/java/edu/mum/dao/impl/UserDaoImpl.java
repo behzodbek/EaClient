@@ -12,16 +12,14 @@ import edu.mum.domain.User;
 public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
 	public UserDaoImpl() {
-		super.setDaoType(User.class );
-		}
+		super.setDaoType(User.class);
+	}
 
 	public User findByEmail(String email) {
-	     
+
 		Query query = entityManager.createQuery("select u from User u  where u.email =:email");
 		return (User) query.setParameter("email", email).getSingleResult();
-			     
 
 	}
 
-
- }
+}

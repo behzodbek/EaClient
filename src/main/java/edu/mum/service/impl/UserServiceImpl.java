@@ -12,50 +12,47 @@ import edu.mum.domain.User;
 import edu.mum.service.UserCredentialsService;
 
 @Service
-@Transactional 
+@Transactional
 public class UserServiceImpl implements edu.mum.service.UserService {
-	
- 	@Autowired
+
+	@Autowired
 	private UserDao userDao;
- 	@Autowired
+	@Autowired
 	private UserCredentialsService credentialsService;
- 	
-     public void save( User user) {  		
-  		userDao.save(user);
- 	}
-     @Override
-    	public void saveFull( User user) {  		
-   		credentialsService.save(user.getUserCredentials());
-   		userDao.save(user);
- 	}
-  	
+
+	public void save(User user) {
+		userDao.save(user);
+	}
+
+	@Override
+	public void saveFull(User user) {
+		credentialsService.save(user.getUserCredentials());
+		userDao.save(user);
+	}
+
 	public List<User> findAll() {
-		return (List<User>)userDao.findAll();
+		return (List<User>) userDao.findAll();
 	}
 
 	public User findByEmail(String email) {
 		return userDao.findByEmail(email);
 	}
-	
+
 	public User update(User user) {
-		 return userDao.update(user);
+		return userDao.update(user);
 
 	}
 
-	
- 	public User testRefresh(User user) {
+	public User testRefresh(User user) {
 		user.setEmail("Lotta@Doe.com");
-		  userDao.save(user);
-		
-		  return user;
-	}
+		userDao.save(user);
 
+		return user;
+	}
 
 	@Override
 	public User findOne(Long id) {
-		 
 		return userDao.findOne(id);
 	}
- 
 
 }

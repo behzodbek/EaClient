@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import edu.mum.dao.MessageDao;
 import edu.mum.domain.Messages;
-import edu.mum.domain.User;
 
 /**
  * @author Diana Yamaletdinova
@@ -29,8 +28,8 @@ public class MessageServiceImpl implements edu.mum.service.MessageService{
 	}
 
 	@Override
-	public User findByUserId(String id) {
-		return null;
+	public Messages findByUserId(String id) {
+		return messageDao.findByUserId(id);
 	}
 
 }

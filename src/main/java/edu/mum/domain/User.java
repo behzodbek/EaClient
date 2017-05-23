@@ -60,7 +60,7 @@ public class User implements Serializable {
 	@JoinTable(name = "user_massage", joinColumns = {
 			@JoinColumn(name = "user_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "message_id", unique = true) })
-	private List<Messages> messageList = new ArrayList<Messages>();;
+	private List<Messages> messageList = new ArrayList<Messages>();
 
 
 	public Long getId() {

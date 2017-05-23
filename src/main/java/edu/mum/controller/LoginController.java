@@ -33,7 +33,7 @@ public class LoginController {
 			return  "login";
  
 		model.addAttribute("user", validCredentials.getUser());
-		System.out.println(validCredentials.getUser());
+		
  		return "redirect:/welcome";
 	}
  
