@@ -56,10 +56,10 @@ public class User implements Serializable {
 	@JoinColumn(name = "userId")
 	private UserCredentials userCredentials;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "user_massage", joinColumns = {
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	/*@JoinTable(name = "user_massage", joinColumns = {
 			@JoinColumn(name = "user_id") }, inverseJoinColumns = {
-					@JoinColumn(name = "message_id", unique = true) })
+					@JoinColumn(name = "message_id", unique = true) })*/
 	private List<Messages> messageList = new ArrayList<Messages>();
 
 

@@ -36,20 +36,19 @@ public class UserController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getAddNewUserForm(@ModelAttribute("newUser") User newUser) {
-	   return "newUser";
+	   return "addUser";
 	}
 	   
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String processAddNewUserForm( @Valid @ModelAttribute("newUser") User userToBeAdded, BindingResult result) {
  
 		if(result.hasErrors()) {
-			return "newUser";
+			return "addUser";
 		}
-
 			 //  Error caught by ControllerAdvice IF no authorization...
-			userService.saveFull(userToBeAdded);
+		userService.saveFull(userToBeAdded);
 
-	   	return "redirect:/members";
+	   	return "redirect:/users";
  
 	}
 	

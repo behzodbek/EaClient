@@ -13,7 +13,9 @@ form, p, span {
     padding:0; }
   
 input { font:12px arial; }
-  
+label {
+	display: inline;
+}
 a {
     color:#0000FF;
     text-decoration:none; }
@@ -22,7 +24,7 @@ a {
   
 #wrapper, #loginform {
     margin:0 auto;
-    padding-bottom:25px;
+    padding-bottom:35px;
     background:#EBF4FB;
     width:504px;
     border:1px solid #ACD8F0; }
@@ -51,7 +53,7 @@ a {
     width:395px;
     border:1px solid #ACD8F0; }
   
-#submit { width: 60px; }
+
   
 .error { color: #ff0000; }
   

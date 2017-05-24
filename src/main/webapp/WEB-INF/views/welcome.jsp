@@ -28,7 +28,7 @@
 					alt="Logo" />
 				<h1>${greeting}</h1>
 				<p>${tagline}</p>
-				
+
 
 			</div>
 
@@ -38,10 +38,13 @@
 						<a href="<spring:url value='/login' />"
 							class="btn btn-default pull-right"> Login</a>
 					</c:when>
-					<c:otherwise>
-
-						<a href="<spring:url value="/users/add" />"
+					<c:otherwise >
+						<c:choose>
+							<c:when test="${user.userCredentials == 'admin'}">
+								<a href="<spring:url value="/users/add" />"
 							class="btn btn-default pull-right">Add User</a>
+							</c:when>
+						</c:choose>
 						<a href="<spring:url value="/users" />"
 							class="btn btn-default pull-right">User List</a>
 						<br>
@@ -61,9 +64,9 @@
 		</div>
 		<c:choose>
 			<c:when test="${!empty user}">
+
 				<div class="col-xs-4 col-xs-offset-4">
-					<br />
-					<br />
+					<br /> <br />
 					<div id="wrapper">
 						<div id="menu">
 							<p class="welcome">
@@ -74,40 +77,61 @@
 							</p>
 							<div style="clear: both"></div>
 						</div>
-						<div id="chatbox"></div>
-						<form id = "msgtext" name="message" modelAttribute="newMessage"
-							action="<spring:url value="/sendMsg"></spring:url>" method="post" class="form-signin">
+						<div id="chatbox">
+
+							<c:choose>
+								<c:when test="${!empty msgToBeAdded}">${user.firstName} @ ${msgToBeAdded.receiver.firstName}:  ${msgToBeAdded.message}</c:when>
+							</c:choose>
+						</div>
+						<form id="msgtext" name="message" modelAttribute="newMessage"
+							action="<spring:url value="/sendMsg"></spring:url>" method="post"
+							class="form-signin">
 							<sec:csrfInput />
 							<fieldset>
+							
 								<div class="form-group">
 									<div class="checkbox">
-										<label><input type="checkbox" value="">user 1</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="">user 2</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="" >user 3</label>
-									</div>
 
+										<c:forEach items="${users}" var="m_user">
+											<c:choose>
+												<c:when test="${user.id != m_user.id}">
+													<label> <input name="receiver.id" type="checkbox" data-id="${user.id}"
+														value="${m_user.id}" />${m_user.firstName}
+													</label><br>
+													
+												</c:when>
+											</c:choose>
+										</c:forEach>
+
+									</div>
+									
 									<div class="form-group">
 										<label for="InputMessage">Message</label>
 										<div class="input-group">
 											<!-- nput name="usermsg" type="text" id="usermsg" size="63" />
 											<input name="message" type="text" class="form:input-large"/> -->
-											 <textarea name="message"
-												class="form-control" rows="5" cols="12" required></textarea>
+											<textarea name="message" class="form-control" rows="5"
+												cols="12" required></textarea>
 											<!-- <span class="input-group-addon"><i
 											class="glyphicon glyphicon-ok form-control-feedback"></i></span>-->
 										</div>
 									</div>
 								</div>
+								<input type="hidden" name="sender.id" value="${user.id}" />
+
+								<!--<form:hidden id="sender" path="${user.id}"/>		-->
 								<input class="btn btn-lg btn-primary btn-block" name="submitmsg"
-									type="submit" id="submitmsg" value="Send" />
+									type="submit" id="submitmsg" value="Send" /> <br />
+								<br />
+								<br />
 							</fieldset>
 						</form>
-						</div>
+
 					</div>
+					<br />
+					<br />
+					<br />
+				</div>
 			</c:when>
 		</c:choose>
 	</section>

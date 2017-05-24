@@ -3,9 +3,12 @@ package edu.mum.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 /**
  * @author Diana Yamaletdinova
@@ -19,8 +22,16 @@ public class Messages {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	
+	@Column(name = "MESSAGE", nullable = false)
+	private String message;
+
+	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.MERGE }) 
+	//@JoinColumn(name="messageSenderId")
 	private User sender;
 	
+	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.MERGE }) 
+	//@JoinColumn(name="messageReceiverId")
 	private User receiver;
 	
 	public User getSender() {
@@ -38,9 +49,6 @@ public class Messages {
 	public void setReceiver(User receiver) {
 		this.receiver = receiver;
 	}
-	
-	@Column(name = "MESSAGE", nullable = false)
-	private String message;
 
 	public long getId() {
 		return id;

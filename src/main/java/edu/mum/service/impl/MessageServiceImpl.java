@@ -32,4 +32,10 @@ public class MessageServiceImpl implements edu.mum.service.MessageService{
 		return messageDao.findByUserId(id);
 	}
 
+	
+	@Override
+	public Messages update(Messages msgToBeAdded) {
+		return messageDao.update(msgToBeAdded);		
+	}
+
 }

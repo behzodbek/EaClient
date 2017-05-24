@@ -14,5 +14,6 @@ public interface MessageService {
 	
 	public void save(Messages msg);
 	public Messages findByUserId(String id);
+	public Messages update(Messages msgToBeAdded);
 	
 }
