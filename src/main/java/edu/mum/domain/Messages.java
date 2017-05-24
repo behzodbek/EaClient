@@ -12,34 +12,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+
 /**
  * @author Diana Yamaletdinova
  *
- * May 21, 2017
+ *         May 21, 2017
  */
-@Entity(name="Message")
+@Entity(name = "Message")
 public class Messages {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	
+
 	@Column(name = "MESSAGE", nullable = false)
 	private String message;
 
-	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.MERGE }) 
-	//@JoinColumn(name="messageSenderId")
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private User sender;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.MERGE }) 
-	//@JoinColumn(name="messageReceiverId")
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private User receiver;
-	
-	
+
 	@Transient
-	List <Long> receiverids = new ArrayList<>();
-	
+	List<Long> receiverids = new ArrayList<>();
+
 	public List<Long> getReceiverids() {
 		return receiverids;
 	}
@@ -48,11 +45,6 @@ public class Messages {
 		this.receiverids = receiverids;
 	}
 
-	
-	
-	
-	
-	
 	public User getSender() {
 		return sender;
 	}
@@ -84,8 +76,5 @@ public class Messages {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
-
-
 
 }

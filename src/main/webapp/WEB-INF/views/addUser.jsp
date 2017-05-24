@@ -50,7 +50,6 @@
 					</div>
 				</div>
 
- 
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="userName">User Name</label>
 					<div class="col-lg-10">
@@ -60,7 +59,6 @@
 						</div>
 					</div>
 				</div>
-
 	
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="password">Password</label>
@@ -71,7 +69,6 @@
 						</div>
 					</div>
 				</div>
-
 	
 					<div class="form-group">
 					<label class="control-label col-lg-2" for="authority">Role</label>

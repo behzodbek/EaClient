@@ -20,10 +20,11 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * @author Diana Yamaletdinova
  *
- * May 21, 2017
+ *         May 21, 2017
  */
 @Entity(name = "User")
 public class User implements Serializable {
@@ -43,24 +44,16 @@ public class User implements Serializable {
 	@Column(name = "LASTNAME", nullable = false)
 	private String lastName;
 
-	//@Email(message = "{Email}", groups = { Details.class })
 	@Email(message = "{Email}")
 	@Column(name = "EMAIL", nullable = false)
 	private String email;
 
-//	@Column(name = "IS_ADMIN", nullable = false)
-//	private boolean admin = false;
-
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "usercred_id")
 	private UserCredentials userCredentials;
-	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	/*@JoinTable(name = "user_massage", joinColumns = {
-			@JoinColumn(name = "user_id") }, inverseJoinColumns = {
-					@JoinColumn(name = "message_id", unique = true) })*/
-	private List<Messages> messageList = new ArrayList<Messages>();
 
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Messages> messageList = new ArrayList<Messages>();
 
 	public Long getId() {
 		return id;
@@ -93,14 +86,6 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-//	public boolean isAdmin() {
-//		return admin;
-//	}
-//
-//	public void setAdmin(boolean admin) {
-//		this.admin = admin;
-//	}
 
 	public UserCredentials getUserCredentials() {
 		return userCredentials;
