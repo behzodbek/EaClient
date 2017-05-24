@@ -25,6 +25,7 @@ public class UserServiceImpl implements edu.mum.service.UserService {
 	}
 
 	@Override
+	//some (hasRole("ROLE_ADMIN")
 	public void saveFull(User user) {
 		credentialsService.save(user.getUserCredentials());
 		userDao.save(user);

@@ -73,16 +73,6 @@
 				</div>
 
 	
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="verifyPassword">Verify Password</label>
-					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:password  path="userCredentials.verifyPassword"  class="form:input-large"/>
-							<form:errors path="userCredentials.verifyPassword" cssClass="text-danger"/>
-						</div>
-					</div>
-				</div>
-
 					<div class="form-group">
 					<label class="control-label col-lg-2" for="authority">Role</label>
 					<div class="col-lg-10">

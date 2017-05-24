@@ -38,16 +38,18 @@
 						<a href="<spring:url value='/login' />"
 							class="btn btn-default pull-right"> Login</a>
 					</c:when>
-					<c:otherwise >
+					<c:otherwise>
 						<c:choose>
-							<c:when test="${user.userCredentials.authority.getRole() eq 'admin'}">
+							<c:when
+								test="${user.userCredentials.authority[0].authority eq 'ROLE_ADMIN'}">
 								<a href="<spring:url value="/users/add" />"
-							class="btn btn-default pull-right">Add User</a>
+									class="btn btn-default pull-right">Add User</a>
+								<a href="<spring:url value="/users" />"
+									class="btn btn-default pull-right">User List</a>
+								<br>
 							</c:when>
 						</c:choose>
-						<a href="<spring:url value="/users" />"
-							class="btn btn-default pull-right">User List</a>
-						<br>
+
 						<a href="<spring:url value='/logout' />"
 							class="btn btn-default pull-right"> Logout</a>
 
@@ -78,10 +80,7 @@
 							<div style="clear: both"></div>
 						</div>
 						<div id="chatbox">
-
-							<c:choose>
-								<c:when test="${!empty msgToBeAdded}">
-								
+				
 									<c:forEach items="${messages}" var="m_message">
 										<c:choose>
 										<c:when test="${user.id == m_message.sender.id}">
@@ -89,8 +88,7 @@
 										</c:when>
 										</c:choose>
 									</c:forEach>
-								</c:when>
-							</c:choose>
+					
 						</div>
 						<form id="msgtext" name="message" modelAttribute="newMessage"
 							action="<spring:url value="/sendMsg"></spring:url>" method="post"

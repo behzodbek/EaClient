@@ -38,7 +38,6 @@ public class MessageController {
 	
 	@RequestMapping(value="/welcome", method = RequestMethod.GET)
 	public String welcome(Model model) {
-		//System.out.println(model.asMap());
 		List <User> users = new ArrayList<>();
 		users = userService.findAll();
 		model.addAttribute("users", users);
@@ -46,8 +45,7 @@ public class MessageController {
 		List <Messages> messages = new ArrayList<>();
 		messages = messageService.findAll();
 		model.addAttribute("messages", messages);
-		//get list of messages
-		
+		System.out.println("Welcome to welcome.jsp");
 		return "welcome";
 	}
 	

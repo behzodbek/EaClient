@@ -14,10 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 /**
  * @author Diana Yamaletdinova
  *
- * May 21, 2017
+ *         May 21, 2017
  */
 @Entity(name = "Usercredentials")
 public class UserCredentials {
@@ -26,22 +27,19 @@ public class UserCredentials {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USERCRED_ID")
 	private Long id = null;
-	
+
 	@Column(name = "USER", nullable = false, unique = true, length = 127)
 	String userName;
 
 	@Column(name = "PASSWORD", nullable = false)
 	String password;
-	
+
 	Boolean enabled;
 
 	@OneToOne(mappedBy = "userCredentials", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private User user;
 
-	@OneToMany(mappedBy="usercred", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	/*@JoinTable(name = "credential_authority", joinColumns = {
-			@JoinColumn(name = "credential_id", unique = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "authority_id", unique = false) })*/
+	@OneToMany(mappedBy = "usercred", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<Authority> authority = new ArrayList<Authority>();
 
 	public String getUserName() {
