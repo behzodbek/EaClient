@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
  *
  * May 21, 2017
  */
-@Entity(name="Groups")
+@Entity(name="Group")
 public class Group {
 
 	@Id

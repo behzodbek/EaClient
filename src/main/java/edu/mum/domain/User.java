@@ -25,8 +25,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * May 21, 2017
  */
-@Entity
-@Table(name = "USERS")
+@Entity(name = "User")
 public class User implements Serializable {
 
 	@Id
@@ -49,11 +48,11 @@ public class User implements Serializable {
 	@Column(name = "EMAIL", nullable = false)
 	private String email;
 
-	@Column(name = "IS_ADMIN", nullable = false)
-	private boolean admin = false;
+//	@Column(name = "IS_ADMIN", nullable = false)
+//	private boolean admin = false;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "usercred_id")
 	private UserCredentials userCredentials;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
@@ -95,13 +94,13 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
+//	public boolean isAdmin() {
+//		return admin;
+//	}
+//
+//	public void setAdmin(boolean admin) {
+//		this.admin = admin;
+//	}
 
 	public UserCredentials getUserCredentials() {
 		return userCredentials;

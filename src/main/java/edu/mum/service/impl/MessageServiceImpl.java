@@ -3,6 +3,8 @@
  */
 package edu.mum.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,11 @@ public class MessageServiceImpl implements edu.mum.service.MessageService{
 	@Override
 	public Messages update(Messages msgToBeAdded) {
 		return messageDao.update(msgToBeAdded);		
+	}
+
+	@Override
+	public List<Messages> findAll() {
+		return (List<Messages>) messageDao.findAll();
 	}
 
 }

@@ -42,7 +42,13 @@ public class MessageController {
 		List <User> users = new ArrayList<>();
 		users = userService.findAll();
 		model.addAttribute("users", users);
- 		return "welcome";
+		
+		List <Messages> messages = new ArrayList<>();
+		messages = messageService.findAll();
+		model.addAttribute("messages", messages);
+		//get list of messages
+		
+		return "welcome";
 	}
 	
 	@RequestMapping(value = "/sendMsg", method = RequestMethod.POST)
@@ -54,10 +60,15 @@ public class MessageController {
 		}	
 		
 		User sender = userService.findOne(msgToBeAdded.getSender().getId()); 
-		msgToBeAdded.setSender(sender);		
-		User receiver = userService.findOne(msgToBeAdded.getReceiver().getId());
-		msgToBeAdded.setReceiver(receiver);
-		messageService.update(msgToBeAdded);
+		msgToBeAdded.setSender(sender);	
+		
+		for ( Long rId: msgToBeAdded.getReceiverids()){
+			User receiver = userService.findOne(rId);
+			msgToBeAdded.setReceiver(receiver);
+			messageService.update(msgToBeAdded);
+			//msgToBeAdded.setId(0);
+		}
+		
 		ra.addFlashAttribute("msgToBeAdded", msgToBeAdded);
 		//model.addAttribute("msgToBeAdded", msgToBeAdded);
 		System.out.println(msgToBeAdded.getMessage());

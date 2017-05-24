@@ -39,9 +39,6 @@ public class LoginController {
 		UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUserName());
 		if (validCredentials == null)
 			return  "login";
-		//ra.addFlashAttribute("user", validCredentials.getUser());
-		
-		
 		model.addAttribute("user", validCredentials.getUser());
  		return "redirect:/welcome";
 	}

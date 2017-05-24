@@ -40,7 +40,7 @@
 					</c:when>
 					<c:otherwise >
 						<c:choose>
-							<c:when test="${user.userCredentials == 'admin'}">
+							<c:when test="${user.userCredentials.authority.getRole() eq 'admin'}">
 								<a href="<spring:url value="/users/add" />"
 							class="btn btn-default pull-right">Add User</a>
 							</c:when>
@@ -80,7 +80,16 @@
 						<div id="chatbox">
 
 							<c:choose>
-								<c:when test="${!empty msgToBeAdded}">${user.firstName} @ ${msgToBeAdded.receiver.firstName}:  ${msgToBeAdded.message}</c:when>
+								<c:when test="${!empty msgToBeAdded}">
+								
+									<c:forEach items="${messages}" var="m_message">
+										<c:choose>
+										<c:when test="${user.id == m_message.sender.id}">
+											${user.firstName} @ ${m_message.receiver.firstName}:  ${m_message.message} <br/>
+										</c:when>
+										</c:choose>
+									</c:forEach>
+								</c:when>
 							</c:choose>
 						</div>
 						<form id="msgtext" name="message" modelAttribute="newMessage"
@@ -95,7 +104,7 @@
 										<c:forEach items="${users}" var="m_user">
 											<c:choose>
 												<c:when test="${user.id != m_user.id}">
-													<label> <input name="receiver.id" type="checkbox" data-id="${user.id}"
+													<label> <input name="receiverids" type="checkbox" data-id="${user.id}"
 														value="${m_user.id}" />${m_user.firstName}
 													</label><br>
 													

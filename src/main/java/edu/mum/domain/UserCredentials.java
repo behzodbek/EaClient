@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -17,10 +19,14 @@ import javax.persistence.OneToOne;
  *
  * May 21, 2017
  */
-@Entity(name = "Authentication")
+@Entity(name = "Usercredentials")
 public class UserCredentials {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "USERCRED_ID")
+	private Long id = null;
+	
 	@Column(name = "USER", nullable = false, unique = true, length = 127)
 	String userName;
 
@@ -32,10 +38,10 @@ public class UserCredentials {
 	@OneToOne(mappedBy = "userCredentials", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private User user;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "credential_authority", joinColumns = {
-			@JoinColumn(name = "credential_id") }, inverseJoinColumns = {
-					@JoinColumn(name = "authority_id", unique = true) })
+	@OneToMany(mappedBy="usercred", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	/*@JoinTable(name = "credential_authority", joinColumns = {
+			@JoinColumn(name = "credential_id", unique = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "authority_id", unique = false) })*/
 	List<Authority> authority = new ArrayList<Authority>();
 
 	public String getUserName() {
