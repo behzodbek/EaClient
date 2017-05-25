@@ -10,10 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  * @author Diana Yamaletdinova
@@ -42,6 +41,9 @@ public class UserCredentials {
 	@OneToMany(mappedBy = "usercred", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<Authority> authority = new ArrayList<Authority>();
 
+	@Transient
+	private String authorityRole;
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -80,6 +82,22 @@ public class UserCredentials {
 
 	public void setAuthority(List<Authority> authority) {
 		this.authority = authority;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAuthorityRole() {
+		return authorityRole;
+	}
+
+	public void setAuthorityRole(String authorityRole) {
+		this.authorityRole = authorityRole;
 	}
 
 }

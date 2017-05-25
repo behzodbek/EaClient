@@ -24,9 +24,9 @@
 		<div class="jumbotron">
 			<div class="container">
 				<img
-					src="<spring:url value="/resource/images/logo2.jpg"  htmlEscape="true" />"
+					src="<spring:url value="/resource/images/logo3.jpg"  htmlEscape="true" />"
 					alt="Logo" />
-				<h1>${greeting}</h1>
+				<!-- <h1>${greeting}</h1> -->
 				<p>${tagline}</p>
 
 
@@ -43,9 +43,9 @@
 							<c:when
 								test="${user.userCredentials.authority[0].authority eq 'ROLE_ADMIN'}">
 								<a href="<spring:url value="/users/add" />"
-									class="btn btn-default pull-right">Add User</a>
+									class="btn btn-default pull-right">Add Trolls</a>
 								<a href="<spring:url value="/users" />"
-									class="btn btn-default pull-right">User List</a>
+									class="btn btn-default pull-right">Trolls List</a>
 								<br>
 							</c:when>
 						</c:choose>
@@ -56,7 +56,7 @@
 					</c:otherwise>
 				</c:choose>
 				<a href="<spring:url value='/users' />" class="btn btn-default">
-					<span class="glyphicon-hand-left glyphicon"></span> Go to Community
+					<span class="glyphicon-hand-left glyphicon"></span> Checkout trolls.
 				</a>
 			</div>
 			<div class="pull-left">
@@ -67,7 +67,7 @@
 		<c:choose>
 			<c:when test="${!empty user}">
 
-				<div class="col-xs-4 col-xs-offset-4">
+				<div class="span4 offset4">
 					<br /> <br />
 					<div id="wrapper">
 						<div id="menu">
@@ -117,8 +117,7 @@
 										<div class="input-group">
 											<!-- nput name="usermsg" type="text" id="usermsg" size="63" />
 											<input name="message" type="text" class="form:input-large"/> -->
-											<textarea name="message" class="form-control" rows="5"
-												cols="12" required></textarea>
+											<textarea name="message" class="form-control" style="margin: 0px; width: 892px; height: 54px;" required></textarea>
 											<!-- <span class="input-group-addon"><i
 											class="glyphicon glyphicon-ok form-control-feedback"></i></span>-->
 										</div>
@@ -127,7 +126,7 @@
 								<input type="hidden" name="sender.id" value="${user.id}" />
 
 								<!--<form:hidden id="sender" path="${user.id}"/>		-->
-								<input class="btn btn-lg btn-primary btn-block" name="submitmsg"
+								<input class="btn btn-lg btn-primary" name="submitmsg"
 									type="submit" id="submitmsg" value="Send" /> <br />
 								<br />
 								<br />

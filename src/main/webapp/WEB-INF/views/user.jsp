@@ -13,9 +13,9 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-						<img src="<spring:url value="/resource/images/logo2.jpg"  htmlEscape="true" />" alt="Logo"  />
-				<h1>One of our People</h1>
-				<p>An important contributor  to our Community!!!</p>
+						<img src="<spring:url value="/resource/images/logo3.jpg"  htmlEscape="true" />" alt="Logo"  />
+		<h1> Our Trolls</h1>  
+				<p><button class="btn btn-default pull-right" type=button onclick=window.location.href="<spring:url value="/welcome" />">Home</button></p>
 			</div>
    			
  							<div class="pull-left"> <h3>${SpecialBlurb}</h3> </div>

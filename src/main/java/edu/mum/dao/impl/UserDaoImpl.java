@@ -5,6 +5,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.mum.dao.UserDao;
+import edu.mum.domain.Authority;
 import edu.mum.domain.User;
 
 @SuppressWarnings("unchecked")
@@ -21,5 +22,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 		return (User) query.setParameter("email", email).getSingleResult();
 
 	}
+	
+
 
 }

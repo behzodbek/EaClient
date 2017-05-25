@@ -7,20 +7,21 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" 	href="<c:url value="/resource/css/style.css" />" >
-<title>Users</title>
+<title>Trolls</title>
 </head>
 <body>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
 				<img src="<spring:url value="/resource/images/logo2.jpg"  htmlEscape="true" />" alt="Logo"  />
-				<h1>Our People</h1>
-				<p>All of the contributors to our Community!!!</p>
+				<h1>Our trolls</h1>
  			
  				<div class="pull-left"> <h3>${SpecialBlurb}</h3> </div>
 			</div>
  			<c:if test = "${not empty user }" >
- 					<a href="<spring:url value="/users/add" />" class="btn btn-danger btn-mini pull-right">Add a new one</a>	
+ 					<a href="<spring:url value="/users/add" />" class="btn btn-danger btn-mini pull-right">Add a new one</a>
+ 					<p><button class="btn btn-default pull-right" type=button onclick=window.location.href="<spring:url value="/welcome" />">Home</button></p>
+ 						
  				<br>
 				<spring:url var="logoutUrl" value="/logout"/>
 				<form action="${logoutUrl}" method="get">

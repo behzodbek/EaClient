@@ -12,17 +12,20 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-			<img src="<spring:url value="/resource/images/logo2.jpg"  htmlEscape="true" />" alt="Logo"  />	
+			<img src="<spring:url value="/resource/images/logo3.jpg"  htmlEscape="true" />" alt="Logo"  />	
 			</div>
 		</div>
 	</section>
+	
 <div class="container">
     <div class="row">
+    <br/><br/><br/><br/>
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
 			    	<h2 class="form-signin-heading">Please sign in</h2>
 			 	</div>
+			 	
 			  	<div class="panel-body">
 			  	<c:if test="${not empty error}">
 					<div class="alert alert-danger">

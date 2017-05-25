@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.mum.domain.Authority;
 import edu.mum.domain.User;
+import edu.mum.domain.UserCredentials;
 import edu.mum.service.UserService;
 
 @Controller
@@ -45,6 +47,15 @@ public class UserController {
 		if(result.hasErrors()) {
 			return "addUser";
 		}
+	/*	String role  = userToBeAdded.getUserCredentials().getAuthorityRole();
+		UserCredentials uc = new UserCredentials();
+		Authority authority= new Authority();
+		authority.setAuthority(role);
+		
+		uc.getAuthority().add(authority);
+		userToBeAdded.setUserCredentials(uc);
+		
+		System.out.println(userToBeAdded.getUserCredentials().getAuthority().toString());*/
 			 //  Error caught by ControllerAdvice IF no authorization...
 		userService.saveFull(userToBeAdded);
 

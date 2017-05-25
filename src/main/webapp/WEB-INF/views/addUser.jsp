@@ -13,74 +13,107 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<img src="<spring:url value="/resource/images/logo2.jpg"  htmlEscape="true" />" alt="Logo"  />
-				<h1>Valued Users</h1>
-				<p>Add a new one<p>
+				<img src="<spring:url value="/resource/images/logo3.jpg"  htmlEscape="true" />" alt="Logo"  />
+				<h1> Our Trolls</h1>  
+				<p><button class="btn btn-default pull-right" type=button onclick=window.location.href="<spring:url value="/welcome" />">Home</button></p>
 			</div>
 		</div>
 	</section>
-	<section class="container">
-		<form:form  modelAttribute="newUser" class="form-horizontal"  >
+	<div class="container">
+	
+		<form:form  modelAttribute="newUser" class="well form-horizontal"  >
 			<fieldset>
-				<legend>Add new user</legend>
+				<legend><center><h2><b>New Troll Form</b></h2></center></legend><br>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="firstName">First Name</label>
-					<div class="col-lg-10">
-						<form:input id="firstName" path="firstName" type="text" class="form:input-large"/>
-						<form:errors path="firstName" cssClass="text-danger"/>
+					<label class="col-md-4 control-label" for="firstName">First Name</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<form:input id="firstName" path="firstName" type="text" class="form-control" />
+							<form:errors path="firstName" cssClass="text-danger" />
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="lastName">Last Name</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span>
+							<form:input id="lastName" path="lastName" type="text"
+								class="form-control" />
+							<form:errors path="lastName" cssClass="text-danger" />
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="lastName">Last Name</label>
-					<div class="col-lg-10">
-						<form:input id="lastName" path="lastName" type="text" class="form:input-large"/>
-						<form:errors path="lastName" cssClass="text-danger"/>
+					<label class="col-md-4 control-label" for="age">Email</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+							<form:input id="email" path="email" type="text"
+								class="form-control" />
+							<form:errors path="email" cssClass="text-danger" />
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="age">Email</label>
-					<div class="col-lg-10">
-						<form:input id="email" path="email" type="text" class="form:input-large"/>
-						<form:errors path="email" cssClass="text-danger"/>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="userName">User Name</label>
-					<div class="col-lg-10">
+					<label class="col-md-4 control-label" for="userName">Troll Name</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span>
 						<div class="form:input-prepend">
-							<form:input id="userName" path="userCredentials.userName" type="text" class="form:input-large"/>
+							<form:input id="userName" path="userCredentials.userName" type="text" class="form-control"/>
 							<form:errors path="userCredentials.userName" cssClass="text-danger"/>
+						</div>
 						</div>
 					</div>
 				</div>
 	
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="password">Password</label>
-					<div class="col-lg-10">
+					<label class="col-md-4 control-label" for="password">Password</label>
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span>
 						<div class="form:input-prepend">
-							<form:password id="password" path="userCredentials.password"  class="form:input-large"/>
+							<form:password id="password" path="userCredentials.password"  class="form-control"/>
 							<form:errors path="userCredentials.password" cssClass="text-danger"/>
 						</div>
 					</div>
 				</div>
+				</div>
 	
 					<div class="form-group">
-					<label class="control-label col-lg-2" for="authority">Role</label>
-					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input  path="userCredentials.authority[0].authority" type="text" value="ROLE_USER" class="form:input-large"/>
-							<form:errors path="userCredentials.authority[0].authority" cssClass="text-danger"/>
+					<label class="col-md-4 control-label" for="authority">Role</label>
+					<div class="col-md-4 inputGroupContainer">
+					
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span>
+							 <form:select class="form-control" path="userCredentials.authority[0].authority" id="sel1">
+								<form:option value="ROLE_USER" >User</form:option>
+								<form:option value="ROLE_ADMIN" >Admin</form:option>
+								<form:option value="ROLE_READ" >Guest</form:option>
+							</form:select>
 						</div>
+					
+					
+					
+						<br/>
+						
 					</div>
 				</div>
  
- 							<form:hidden path="userCredentials.enabled" value="TRUE"  />
+ 				<form:hidden path="userCredentials.enabled" value="TRUE"  />
  
 
 				<div class="form-group">
@@ -91,6 +124,6 @@
 				
 			</fieldset>
 		</form:form>
-	</section>
+	</div>
 </body>
 </html>
